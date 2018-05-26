@@ -15,7 +15,7 @@
  * The above copyright notice and this permission notice shall be included in
  * all licensed copies of the Software.
  */
-namespace District5\Validate;
+namespace District5\Validator;
 
 /**
  * A
@@ -53,7 +53,7 @@ abstract class A implements I
 	/**
 	 * (non-PHPdoc)
 	 *
-	 * @see \District5\Validate\I::getLastErrorMessage()
+	 * @see \District5\Validator\I::getLastErrorMessage()
 	 */
 	public function getLastErrorMessage()
 	{
