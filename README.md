@@ -1,7 +1,7 @@
 # District5 Validator Library
 
 ## About
-This library provides the skeletons to support validators
+This library provides the skeletons to support validators.
 
 ## Installing
 This library requires no other libraries.

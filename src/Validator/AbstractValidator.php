@@ -72,7 +72,7 @@ abstract class AbstractValidator implements ValidatorInterface
 	}
 	
 	/**
-	 * Sets the message key of the last error to occur
+	 * Sets the message key of the last error to occur.
 	 *
 	 * @param string $errorMessageKey
 	 */

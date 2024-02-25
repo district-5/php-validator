@@ -39,7 +39,7 @@ interface ValidatorInterface
 {
 
     /**
-     * Checks whether a value is valid
+     * Checks whether a value is valid.
      *
      * @param mixed $value The value to validate
      *            
@@ -48,7 +48,7 @@ interface ValidatorInterface
     public function isValid($value): bool;
     
     /**
-     * Gets a message indicating the last error that occurred
+     * Gets a message indicating the last error that occurred.
      */
     public function getLastErrorMessage(): ?string;
 }
