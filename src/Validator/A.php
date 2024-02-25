@@ -1,19 +1,32 @@
 <?php
 
 /**
- * District5 - Validator
+ * District5 Validator Library
  *
- * @copyright District5
+ * @author      District5 <hello@district5.co.uk>
+ * @copyright   District5 <hello@district5.co.uk>
+ * @link        https://www.district5.co.uk
  *
- * @author District5
- * @link https://www.district5.co.uk
+ * MIT LICENSE
  *
- * @license This software and associated documentation (the "Software") may not be
- * used, copied, modified, distributed, published or licensed to any 3rd party
- * without the written permission of District5 or its author.
+ *  Permission is hereby granted, free of charge, to any person obtaining
+ *  a copy of this software and associated documentation files (the
+ *  "Software"), to deal in the Software without restriction, including
+ *  without limitation the rights to use, copy, modify, merge, publish,
+ *  distribute, sublicense, and/or sell copies of the Software, and to
+ *  permit persons to whom the Software is furnished to do so, subject to
+ *  the following conditions:
  *
- * The above copyright notice and this permission notice shall be included in
- * all licensed copies of the Software.
+ *  The above copyright notice and this permission notice shall be
+ *  included in all copies or substantial portions of the Software.
+ *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ *  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ *  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ *  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ *  LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ *  OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ *  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 namespace District5\Validator;
 
@@ -31,23 +44,22 @@ abstract class A implements I
 	 *
 	 * @var array
 	 */
-	protected $_errorMessages = array();
+	protected $errorMessages;
 	
 	/**
 	 * 
 	 * @var string
 	 */
-	protected $_lastErrorMessageKey;
+	protected $lastErrorMessageKey;
 	
 	/**
 	 * Creates a new instance of A
 	 *
 	 * @param array $options
 	 */
-	public function __construct($options = array())
+	public function __construct(array $options = [])
 	{
-		if (array_key_exists('error_messages', $options))
-			$this->_errorMessages = $options['error_messages'];
+        $this->errorMessages = isset($options['errorMessages']) ?? [];
 	}
 	
 	/**
@@ -55,12 +67,9 @@ abstract class A implements I
 	 *
 	 * @see \District5\Validator\I::getLastErrorMessage()
 	 */
-	public function getLastErrorMessage()
+	public function getLastErrorMessage(): string
 	{
-		if (array_key_exists($this->_lastErrorMessageKey, $this->_errorMessages))
-			return $this->_errorMessages[$this->_lastErrorMessageKey];
-	
-		return '';
+        return isset($this->errorMessages[$this->lastErrorMessageKey]) ?? '';
 	}
 	
 	/**
@@ -68,8 +77,8 @@ abstract class A implements I
 	 *
 	 * @param string $errorMessageKey
 	 */
-	protected function setLastErrorMessage($errorMessageKey)
+	protected function setLastErrorMessage(string $errorMessageKey)
 	{
-		$this->_lastErrorMessageKey = $errorMessageKey;
+		$this->lastErrorMessageKey = $errorMessageKey;
 	}
 }
