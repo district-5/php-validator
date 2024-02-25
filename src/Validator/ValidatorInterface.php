@@ -31,13 +31,11 @@
 namespace District5\Validator;
 
 /**
- * I
+ * ValidatorInterface
  *
  * An interface for describing a minimum set of function that all validators should expose.
- *
- * @author Mark Morgan <mark.morgan@district5.co.uk>
  */
-interface I
+interface ValidatorInterface
 {
 
     /**
@@ -52,5 +50,5 @@ interface I
     /**
      * Gets a message indicating the last error that occurred
      */
-    public function getLastErrorMessage(): string;
+    public function getLastErrorMessage(): ?string;
 }

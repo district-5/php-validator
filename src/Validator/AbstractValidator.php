@@ -31,23 +31,22 @@
 namespace District5\Validator;
 
 /**
- * A
+ * AbstractValidator
  *
- * An abstract validator for common validator functionality
- *
- * @author Mark Morgan <mark.morgan@district5.co.uk>
+ * An abstract validator for common validator functionality.
  */
-abstract class A implements I
+abstract class AbstractValidator implements ValidatorInterface
 {
 	/**
-	 * Error messages that can be displayed when validation fails
+	 * Error messages that can be displayed when validation fails.
 	 *
 	 * @var array
 	 */
 	protected $errorMessages;
 	
 	/**
-	 * 
+	 * The key of the last error message to display.
+     *
 	 * @var string
 	 */
 	protected $lastErrorMessageKey;
@@ -65,11 +64,11 @@ abstract class A implements I
 	/**
 	 * (non-PHPdoc)
 	 *
-	 * @see \District5\Validator\I::getLastErrorMessage()
+	 * @see \District5\Validator\ValidatorInterface::getLastErrorMessage()
 	 */
-	public function getLastErrorMessage(): string
+	public function getLastErrorMessage(): ?string
 	{
-        return isset($this->errorMessages[$this->lastErrorMessageKey]) ?? '';
+        return isset($this->errorMessages[$this->lastErrorMessageKey]) ?? null;
 	}
 	
 	/**
