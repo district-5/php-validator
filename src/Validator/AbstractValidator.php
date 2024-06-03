@@ -58,7 +58,7 @@ abstract class AbstractValidator implements ValidatorInterface
 	 */
 	public function __construct(array $options = [])
 	{
-        $this->errorMessages = isset($options['errorMessages']) ?? [];
+        $this->errorMessages = $options['errorMessages'] ?? [];
 	}
 	
 	/**
@@ -68,8 +68,22 @@ abstract class AbstractValidator implements ValidatorInterface
 	 */
 	public function getLastErrorMessage(): ?string
 	{
-        return isset($this->errorMessages[$this->lastErrorMessageKey]) ?? null;
+        if (null === $this->lastErrorMessageKey) {
+            return null;
+        }
+
+        return $this->errorMessages[$this->lastErrorMessageKey];
 	}
+
+    /**
+     * (non-PHPdoc)
+     *
+     * @see \District5\Validator\ValidatorInterface::getLastErrorMessageKey()
+     */
+    public function getLastErrorMessageKey(): ?string
+    {
+        return $this->lastErrorMessageKey ?? null;
+    }
 	
 	/**
 	 * Sets the message key of the last error to occur.

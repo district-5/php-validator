@@ -51,4 +51,9 @@ interface ValidatorInterface
      * Gets a message indicating the last error that occurred.
      */
     public function getLastErrorMessage(): ?string;
+
+    /**
+     * Gets the message key used for indicating the last error that occurred.
+     */
+    public function getLastErrorMessageKey(): ?string;
 }
