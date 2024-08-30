@@ -72,7 +72,11 @@ abstract class AbstractValidator implements ValidatorInterface
 	 */
 	public function getLastErrorMessage(): ?string
 	{
-        if (null === $this->lastErrorMessageKey) {
+        if (!isset($this->lastErrorMessageKey)) {
+            return null;
+        }
+
+        if (!isset($this->errorMessages[$this->lastErrorMessageKey])) {
             return null;
         }
 

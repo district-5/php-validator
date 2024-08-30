@@ -14,6 +14,22 @@ class AbstractValidatorTest extends TestCase
         $this->assertTrue($validator->isValid('anything'));
     }
 
+    public function testInvalidMissingErrorKey()
+    {
+        $validator = new MockValidator(false);
+
+        $this->assertFalse($validator->isValid('error3'));
+        $this->assertNull($validator->getLastErrorMessage());
+    }
+
+    public function testInvalidNoLastErrorKeySet()
+    {
+        $validator = new MockValidator(false);
+
+        $this->assertFalse($validator->isValid('error4'));
+        $this->assertNull($validator->getLastErrorMessage());
+    }
+
     public function testNotOverridingErrorMessageKeys()
     {
         $validator = new MockValidator(false);

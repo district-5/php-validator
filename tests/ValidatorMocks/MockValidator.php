@@ -28,6 +28,10 @@ class MockValidator extends AbstractValidator
                 $this->setLastErrorMessage('error1');
             } elseif ($value === 'error2') {
                 $this->setLastErrorMessage('error2');
+            } elseif ($value === 'error3') {
+                $this->setLastErrorMessage('error3');
+            } elseif ($value === 'error4') {
+                // do nothing, we dont want to set an error key for testing
             } else {
                 $this->setLastErrorMessage('error');
             }
