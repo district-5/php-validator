@@ -11,9 +11,18 @@
     }
   ],
   "require": {
-    "php": ">=7.1"
+    "php": ">=7.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "9.*"
   },
   "autoload": {
     "psr-4": { "District5\\Validator\\": "src/Validator/" }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "District5Tests\\ValidatorTests\\": "tests/ValidatorTests/",
+      "District5Tests\\ValidatorMocks\\": "tests/ValidatorMocks/"
+    }
   }
 }
