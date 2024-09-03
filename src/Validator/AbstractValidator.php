@@ -42,23 +42,27 @@ abstract class AbstractValidator implements ValidatorInterface
 	 *
 	 * @var array
 	 */
-	protected $errorMessages;
+	protected array $errorMessages;
 	
 	/**
 	 * The key of the last error message to display.
      *
 	 * @var string
 	 */
-	protected $lastErrorMessageKey;
+	protected string $lastErrorMessageKey;
 	
 	/**
-	 * Creates a new instance of A
+	 * Creates a new instance of AbstractValidator
 	 *
 	 * @param array $options
 	 */
 	public function __construct(array $options = [])
 	{
-        $this->errorMessages = $options['errorMessages'] ?? [];
+        if (isset($this->errorMessages) && isset($options['errorMessages'])) {
+            $this->errorMessages = array_merge($this->errorMessages, $options['errorMessages']);
+        } else {
+            $this->errorMessages = $options['errorMessages'] ?? [];
+        }
 	}
 	
 	/**
@@ -68,7 +72,11 @@ abstract class AbstractValidator implements ValidatorInterface
 	 */
 	public function getLastErrorMessage(): ?string
 	{
-        if (null === $this->lastErrorMessageKey) {
+        if (!isset($this->lastErrorMessageKey)) {
+            return null;
+        }
+
+        if (!isset($this->errorMessages[$this->lastErrorMessageKey])) {
             return null;
         }
 

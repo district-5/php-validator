@@ -1,3 +1,4 @@
+[![codecov](https://codecov.io/gh/district-5/php-validator/graph/badge.svg?token=Q2W8B4UC8C)](https://codecov.io/gh/district-5/php-validator)
 # District5 Validator Library
 
 ## About
